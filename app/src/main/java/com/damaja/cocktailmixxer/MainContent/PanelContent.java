@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.damaja.cocktailmixxer.AddCocktail.AddCocktail;
 import com.damaja.cocktailmixxer.CocktailList.CocktailList;
 import com.damaja.cocktailmixxer.R;
 import com.viewpagerindicator.LinePageIndicator;
@@ -66,7 +67,12 @@ public class PanelContent extends Fragment {
 
         @Override
         public Fragment getItem(int position) {
+            if (position == 0)
             return CocktailList.newInstance();
+            else if (position == 1)
+                return AddCocktail.newInstance();
+            else
+                return CocktailList.newInstance();
         }
 
         @Override

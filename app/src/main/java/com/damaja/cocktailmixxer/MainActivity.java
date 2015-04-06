@@ -1,29 +1,16 @@
 package com.damaja.cocktailmixxer;
 
-import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
 import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.damaja.cocktailmixxer.Components.BluetoothSerialService;
-import com.damaja.cocktailmixxer.Components.CM_Status;
+import com.damaja.cocktailmixxer.Components.DataBus;
 import com.damaja.cocktailmixxer.Components.RowItem;
 import com.damaja.cocktailmixxer.MainContent.PanelContent;
 import com.damaja.cocktailmixxer.MainContent.PanelSlideUp;
@@ -69,7 +56,7 @@ public class MainActivity extends ActionBarActivity {
             setupCommand();
     }
 
-    CM_Status status;
+    DataBus status;
 
     Spinner spinnerUser;
     List<RowItem> users;
@@ -79,11 +66,11 @@ public class MainActivity extends ActionBarActivity {
 
 
 
-    @Override
-    protected void onStop() {
-        status.saveAll();			// User, Status, Cocktails, Säfte(_intern) werden auf dem Speicher gesichert.
-        super.onDestroy();
-    }
+//    @Override
+//    protected void onStop() {
+//        status.saveAll();			// User, Status, Cocktails, Säfte(_intern) werden auf dem Speicher gesichert.
+//        super.onDestroy();
+//    }
 
 
 
@@ -92,7 +79,7 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        status = (CM_Status) getApplicationContext();
+        status = (DataBus) getApplicationContext();
         //setContentView(R.layout.activity_main);
         getSupportFragmentManager().beginTransaction().replace(R.id.main_content_main, PanelContent.newInstance(), PanelContent.getTAG()).commit();
         getSupportFragmentManager().beginTransaction().replace(R.id.main_content_slideup, PanelSlideUp.newInstance(), PanelSlideUp.getTAG()).commit();

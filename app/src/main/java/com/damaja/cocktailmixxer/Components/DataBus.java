@@ -3,6 +3,8 @@ package com.damaja.cocktailmixxer.Components;
 import android.app.Application;
 import android.os.Environment;
 
+import com.damaja.cocktailmixxer.R;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -20,7 +22,7 @@ import java.util.List;
 //  @ Author : Matthias Wildberg, Jakob Nisin
 //  @ Description: Verwaltung alles wichtigen Daten, Listen und funktionen.
 
-public class CM_Status extends Application implements Serializable {
+public class DataBus extends Application implements Serializable {
 
 	private static final long serialVersionUID = 1L;	//versionsnummer f�r die serialisierung
 	@SuppressWarnings("unchecked")
@@ -39,7 +41,7 @@ public class CM_Status extends Application implements Serializable {
 
 	//Speicherorte werden festgelegt
 	public final static String APP_PATH_SD_USERPICS = "/cocktailmixxer/userpics";
-	public final static String STATUS_FILENAME = "CM_Status"; 
+	public final static String STATUS_FILENAME = "DataBus";
 	String fullPathPic = Environment.getExternalStorageDirectory()
 			.getAbsolutePath() + APP_PATH_SD_USERPICS;
 	public final static String APP_PATH_SD_APPLICATION = "/cocktailmixxer/";
@@ -168,9 +170,11 @@ public class CM_Status extends Application implements Serializable {
 
 	}
 	
-	public CM_Status() {
+	public DataBus() {
 		setUpCocktails(); //statusobject mit vordefinierten S�ften wird erstellt
-
+        CocktailList.add(new Cocktail(R.drawable.icon_cocktail,"Tequilla Sunrise", "ison Cocktail"));
+        CocktailList.add(new Cocktail(R.drawable.icon_cocktail,"Long Island", "ison Cocktail"));
+        CocktailList.add(new Cocktail(R.drawable.icon_cocktail,"Goil Shit", "ison Cocktail"));
 		for (int i = 0; i < 8; i++) {
 			SaftList_intern.add(new Saft("", "",0)); //"leere S�fte" werden in die Maschinensaftliste eingef�gt
 		}

@@ -3,9 +3,7 @@ package com.damaja.cocktailmixxer.Components;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.Iterator;
 import java.util.List;
 
 
@@ -78,18 +76,18 @@ public class User extends RowItem implements Serializable {
 
 	public User(String name, double weight, double length, boolean gesch,
 			GregorianCalendar birth) {					// Konstruktor, Attribute werden zugewiesen
-		super(CM_Status.getUserid(), name, "");	
+		super(DataBus.getUserid(), name, "");
 		B_Name = name;
 		Weight = weight;
 		Length = length;
 		Geschlecht = gesch;
 		Birthdate = birth;
 		setAlter();
-		ID = CM_Status.getUserid();
+		ID = DataBus.getUserid();
 		AlkGehalt = 0.0;
 		Promille = 0.0;
 		setDescription();
-		CM_Status.inkUserid();							// Statische User id wird hochgez�hlt
+		DataBus.inkUserid();							// Statische User id wird hochgez�hlt
 	}
 	
 	
